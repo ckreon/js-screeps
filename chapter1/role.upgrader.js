@@ -18,7 +18,7 @@ var roleUpgrader = {
 			if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
 				creep.moveTo(creep.room.controller);
 			}
-			else if (creep.carry.energy == 0) {
+			if (creep.carry.energy == 0) {
 				creep.say('Harvesting');
 			  creep.memory.harvesting = true;
 			}

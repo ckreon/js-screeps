@@ -29,7 +29,7 @@ var roleHarvester = {
 					creep.moveTo(targets[0]);
 				}
 			}
-			else if (creep.carry.energy == 0) {
+			if (creep.carry.energy == 0) {
 				creep.say('Harvesting');
 			  creep.memory.harvesting = true;
 			}
