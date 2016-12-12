@@ -37,14 +37,14 @@ module.exports.loop = function () {
   //
 
 	// spawn harvesters if there are less than 5
-	if (harvesters.length < 5) {
+	if (harvesters.length < 2) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, CARRY, MOVE, MOVE, MOVE], undefined,
 			{ role: 'harvester', harvesting: true } );
 		console.log('Spawning new harvester: '+newName);
 	}
 	// spawn upgraders if there are less than 5
-	else if (upgraders.length < 5) {
+	else if (upgraders.length < 2) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, CARRY, MOVE, MOVE, MOVE], undefined,
 			{ role: 'upgrader', harvesting: true } );
