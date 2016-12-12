@@ -49,7 +49,7 @@ module.exports.loop = function () {
 		console.log('Spawning new upgrader: ' +newName);
 	}
 	// spawn builders if there are less than 1
-	else if (builders.length < 1) {
+	else if (builders.length < 0) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, CARRY, MOVE, MOVE, MOVE], undefined, { role: 'builder', harvesting: true } );
 		console.log('Spawning new builder: '+newName);
@@ -78,12 +78,6 @@ module.exports.loop = function () {
 	// UTILITY
 	//
 
-	// log various stats to console each tick
-	console.log('Harvesters: '+harvesters.length);
-	for (var name in Game.rooms) {
-		console.log(
-			'Room "'+name+'" has '+Game.rooms[name].energyAvailable+' energy');
-	}
 	// clear old creeps from memory
 	for (var name in Memory.creeps) {
 		if (!Game.creeps[name]) {
@@ -91,5 +85,13 @@ module.exports.loop = function () {
 			console.log('Clearing old creeps from memory: ', name);
 		}
 	}
+	// log various stats to console each tick
+	/*
+	console.log('Harvesters: '+harvesters.length);
+	for (var name in Game.rooms) {
+		console.log(
+			'Room "'+name+'" has '+Game.rooms[name].energyAvailable+' energy');
+	}
+	*/
 
 } // main loop
