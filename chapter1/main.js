@@ -7,6 +7,8 @@ module.exports.loop = function () {
 																					creep.memory.role == 'harvester');
 	var upgraders = _.filter(Game.creeps, (creep) =>
 																					creep.memory.role == 'upgrader');
+	var builders = _.filter(Game.creeps, (creep) =>
+																					creep.memory.role == 'builder');
 	var tower = Game.getObjectById('b13b7df56b3c5e8fcaa93300');
 
 	// tower logic
@@ -51,6 +53,13 @@ module.exports.loop = function () {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, CARRY, MOVE, MOVE], undefined, { role: 'upgrader' } );
 		console.log('Spawning new upgrader: ' +newName);
+	}
+
+	// spawn builders if there are less than 1
+	if (builders.length < 1) {
+		var newName = Game.spawns['Spawn1'].createCreep(
+			[WORK, CARRY, MOVE, MOVE], undefined, { role: 'builder' } );
+		console.log('Spawning new builder: '+newName);
 	}
 
 	// iterate through all creeps and assign roles
