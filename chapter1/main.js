@@ -47,16 +47,14 @@ module.exports.loop = function () {
 			[WORK, CARRY, MOVE, MOVE], undefined, { role: 'harvester' } );
 		console.log('Spawning new harvester: '+newName);
 	}
-
 	// spawn upgraders if there are less than 1
-	if (upgraders.length < 1) {
+	else if (upgraders.length < 1) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, CARRY, MOVE, MOVE], undefined, { role: 'upgrader' } );
 		console.log('Spawning new upgrader: ' +newName);
 	}
-
 	// spawn builders if there are less than 1
-	if (builders.length < 1) {
+	else if (builders.length < 1) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, CARRY, MOVE, MOVE], undefined, { role: 'builder' } );
 		console.log('Spawning new builder: '+newName);
