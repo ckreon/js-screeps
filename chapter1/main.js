@@ -36,22 +36,25 @@ module.exports.loop = function () {
   // UNIT SPAWNING
   //
 
-	// spawn harvesters if there are less than 2
-	if (harvesters.length < 2) {
+	// spawn harvesters if there are less than 5
+	if (harvesters.length < 5) {
 		var newName = Game.spawns['Spawn1'].createCreep(
-			[WORK, CARRY, MOVE, MOVE, MOVE], undefined, { role: 'harvester', harvesting: true } );
+			[WORK, CARRY, MOVE, MOVE, MOVE], undefined,
+			{ role: 'harvester', harvesting: true } );
 		console.log('Spawning new harvester: '+newName);
 	}
-	// spawn upgraders if there are less than 2
-	else if (upgraders.length < 2) {
+	// spawn upgraders if there are less than 5
+	else if (upgraders.length < 5) {
 		var newName = Game.spawns['Spawn1'].createCreep(
-			[WORK, CARRY, MOVE, MOVE, MOVE], undefined, { role: 'upgrader', harvesting: true } );
+			[WORK, CARRY, MOVE, MOVE, MOVE], undefined,
+			{ role: 'upgrader', harvesting: true } );
 		console.log('Spawning new upgrader: ' +newName);
 	}
-	// spawn builders if there are less than 1
-	else if (builders.length < 0) {
+	// spawn builders if there are less than 2
+	else if (builders.length < 2) {
 		var newName = Game.spawns['Spawn1'].createCreep(
-			[WORK, CARRY, MOVE, MOVE, MOVE], undefined, { role: 'builder', harvesting: true } );
+			[WORK, CARRY, MOVE, MOVE, MOVE], undefined,
+			{ role: 'builder', harvesting: true } );
 		console.log('Spawning new builder: '+newName);
 	}
 
