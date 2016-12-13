@@ -11,7 +11,7 @@ var roleUpgrader = {
 					if (_.filter(Game.creeps, (creep) =>
 							(creep.memory.role == 'harvester') &&
 							(creep.memory.source == source)
-					).length != 3) {
+					).length != 2) {
 						creep.memory.source = source;
 					}
 				}
