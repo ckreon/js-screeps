@@ -8,7 +8,7 @@ Game.spawns['Spawn1'].createCreep(
 	[WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE],
 	undefined, { role: 'harvester' } );
 
-// Use a Safe Mode activation and engage Safe Mode for the room
+// Use a Safe Mode activation for the room
 Game.spawns['Spawn1'].room.controller.activateSafeMode();
 
 // Create a Construction Site using manual coordinates

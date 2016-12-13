@@ -57,15 +57,14 @@ var roleBuilder = {
 				if (creep.build(target) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(target);
 				}
-				else {
-					roleHealer.run(creep);
-				}
 				if (creep.carry.energy == 0) {
 					creep.say('Harvesting');
 					creep.memory.harvesting = true;
 				}
 			}
-		}
+			else {
+					roleHealer.run(creep);
+			}
 
 	} // function
 
