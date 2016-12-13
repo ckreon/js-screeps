@@ -22,7 +22,7 @@ var roleBuilder = {
 					creep.moveTo(target);
 				}
 				else {
-					creep.withdraw(target, RESOURCE_ENERGY,
+					creep.harvest(target, RESOURCE_ENERGY,
 												(creep.carryCapacity - _.sum(creep.carry)));
 				}
 			}
