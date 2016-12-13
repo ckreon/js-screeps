@@ -7,7 +7,7 @@ var roleBuilder = {
 
 		if (creep.memory.harvesting) {
 			var sources = creep.room.find(FIND_SOURCES);
-			var spawns = creep.room.find(FIND_STRUCTURES, {
+			var storage = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (
 								 (structure.structureType == STRUCTURE_SPAWN) &&
@@ -15,16 +15,28 @@ var roleBuilder = {
 				}
 			});
 
-			// if (sources.length) {
-			if (spawns.length > 0) {
-				var target = creep.pos.findClosestByRange(spawns);
+			if (storage.length > 0) {
+				var target = creep.pos.findClosestByRange(storage);
 
 				if (!(creep.pos.isNearTo(target))) {
 					creep.moveTo(target);
 				}
 				else {
-					creep.harvest(target, RESOURCE_ENERGY,
+					creep.withdraw(target, RESOURCE_ENERGY,
 												(creep.carryCapacity - _.sum(creep.carry)));
+				}
+			}
+			else {
+				for (source in sources) {
+					if (_.filter(Game.creeps, (creep) =>
+										 ((creep.memory.role == 'builder') &&
+											(creep.memory.source == source))
+					).length != 1) {
+						creep.memory.source = source;
+					}
+				}
+				if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(sources[creep.memory.source]);
 				}
 			}
 			if (creep.carry.energy == creep.carryCapacity) {
