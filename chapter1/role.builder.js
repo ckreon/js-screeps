@@ -11,7 +11,7 @@ var roleBuilder = {
 				filter: (structure) => {
 					return (
 								 (structure.structureType == STRUCTURE_SPAWN) &&
-								 (structure.store[RESOURCE_ENERGY] > creep.carryCapacity));
+								 (structure.energy > creep.carryCapacity));
 				}
 			});
 
