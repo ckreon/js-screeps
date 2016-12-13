@@ -1,4 +1,4 @@
-var structureTower {
+var structureTower = {
 
 	run: function(tower) {
 
