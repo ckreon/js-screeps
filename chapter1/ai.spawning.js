@@ -1,7 +1,7 @@
 module.exports.builders = function() {
 	var builder_count = _.filter(Game.creeps, (creep) =>
 												(creep.memory.role == 'builder'));
-	if (builder_count.length < 1) {
+	if (builder_count.length < 2) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, CARRY, CARRY, MOVE, MOVE],
 			undefined, { role: 'builder', harvesting: 'true' });
