@@ -6,7 +6,7 @@ var roleBuilder = {
 	run: function(creep) {
 
 		if (creep.memory.harvesting) {
-			var spawns = creep.room sources(FIND_SOURCES);
+			var spawns = creep.room.sources(FIND_SOURCES);
 			// var spawns = creep.room.find(FIND_STRUCTURES, {
 			// 	filter: (structure) => {
 			// 		return (
