@@ -1,4 +1,5 @@
 var roleHealer = require('role.healer');
+var roleHarvester = require('role.harvester');
 
 var roleBuilder = {
 

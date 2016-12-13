@@ -19,7 +19,7 @@ var roleHarvester = {
 			if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
 				creep.moveTo(sources[creep.memory.source]);
 			}
-			if (creep.carry.energy == creep.carryCapacity) {
+			else if (creep.carry.energy == creep.carryCapacity) {
 				creep.say('Depositing');
 			  creep.memory.harvesting = false;
 			}
@@ -37,7 +37,7 @@ var roleHarvester = {
 						return (
 							((structure.structureType == STRUCTURE_SPAWN) ||
 							 (structure.structureType == STRUCTURE_EXTENSION)) &&
-							(structure.energy < structure.energyCapacity));
+							 (structure.energy < structure.energyCapacity));
 					}
 				});
 			}
