@@ -31,13 +31,13 @@ module.exports.loop = function () {
 	// spawn harvesters
 	ai.spawning.harvesters();
 	// spawn haulers
-	ai.spawning.haulers();
+	//ai.spawning.haulers();
 	// spawn upgraders
-	ai.spawning.upgraders();
+	//ai.spawning.upgraders();
 	// spawn builders
-	ai.spawning.builders();
+	//ai.spawning.builders();
 	// spawn healers
-	ai.spawning.healers();
+	//ai.spawning.healers();
 
   // ASSIGN UNITS & STRUCTURES
 
