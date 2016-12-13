@@ -28,11 +28,11 @@ var roleBuilder = {
 				}
 				//var target = creep.pos.findClosestByRange(spawns);
 
-				if (!(creep.pos.isNearTo(target))) {
-					creep.moveTo(target);
+				if (!(creep.pos.isNearTo(source))) {
+					creep.moveTo(source);
 				}
 				else {
-					creep.harvest(target, RESOURCE_ENERGY,
+					creep.harvest(source, RESOURCE_ENERGY,
 												(creep.carryCapacity - _.sum(creep.carry)));
 				}
 			// }
