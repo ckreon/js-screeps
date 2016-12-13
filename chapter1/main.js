@@ -33,7 +33,7 @@ module.exports.loop = function () {
 	// spawn haulers
 	//ai.spawning.haulers();
 	// spawn upgraders
-	//ai.spawning.upgraders();
+	ai.spawning.upgraders();
 	// spawn builders
 	//ai.spawning.builders();
 	// spawn healers
