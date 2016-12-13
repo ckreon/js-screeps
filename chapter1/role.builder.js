@@ -13,7 +13,7 @@ var roleBuilder = {
 			// 					 (structure.structureType == STRUCTURE_CONTAINER) &&
 			// 					 (structure.store[RESOURCE_ENERGY] > creep.carryCapacity));
 			// 	}
-			});
+			// });
 
 			if (spawns.length) {
 				var target = creep.pos.findClosestByRange(spawns);
