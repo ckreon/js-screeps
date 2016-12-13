@@ -26,16 +26,19 @@ var roleBuilder = {
 						}
 					}
 				}
+				if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
+				creep.moveTo(sources[creep.memory.source]);
+				}
+				
 				//var target = creep.pos.findClosestByRange(spawns);
-				var target = creep.memory.source;
 
-				if (!(creep.pos.isNearTo(target))) {
-					creep.moveTo(target);
-				}
-				else {
-					creep.harvest(target, RESOURCE_ENERGY,
-												(creep.carryCapacity - _.sum(creep.carry)));
-				}
+				// if (!(creep.pos.isNearTo(target))) {
+				// 	creep.moveTo(target);
+				// }
+				// else {
+				// 	creep.harvest(target, RESOURCE_ENERGY,
+				// 								(creep.carryCapacity - _.sum(creep.carry)));
+				// }
 			// }
 			if (creep.carry.energy == creep.carryCapacity) {
 					creep.say('Building');
