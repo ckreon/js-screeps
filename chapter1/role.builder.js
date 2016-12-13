@@ -10,7 +10,7 @@ var roleBuilder = {
 			var spawns = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (
-								 (structure.structureType == STRUCTURE_CONTAINER) &&
+								 (structure.structureType == STRUCTURE_SPAWN) &&
 								 (structure.store[RESOURCE_ENERGY] > creep.carryCapacity));
 				}
 			});
@@ -33,7 +33,11 @@ var roleBuilder = {
 			}
 		}
 		else {
-		  var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+		  var targets = creep.room.find(FIND_CONSTRUCTION_SITES, {
+		  	filter: (structure) => {
+		  		return (!(structure.structureType == STRUCTURE_CONTAINER));
+		  	}
+		  });
 
 			if (targets.length) {
 				var target = creep.pos.findClosestByRange(targets);
