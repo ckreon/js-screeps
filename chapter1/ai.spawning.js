@@ -52,7 +52,7 @@ module.exports.upgraders = function() {
 	if (upgrader_count.length < 1) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, WORK, CARRY, MOVE],
-			undefined, { role: 'upgrader', harveesting: 'true' });
+			undefined, { role: 'upgrader', harvesting: 'true' });
 
 		console.log('Spawning new Upgrader: ' + newName);
 	}
