@@ -49,7 +49,7 @@ module.exports.healers = function() {
 module.exports.upgraders = function() {
 	var upgrader_count = _.filter(Game.creeps, (creep) =>
 												 (creep.memory.role == 'upgrader'));
-	if (upgrader_count.length < 2) {
+	if (upgrader_count.length < 1) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, CARRY, MOVE, MOVE],
 			undefined, { role: 'upgrader', harvesting: 'true' });
