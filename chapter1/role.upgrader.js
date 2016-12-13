@@ -6,18 +6,8 @@ var roleUpgrader = {
 		if (creep.memory.harvesting) {
 			var sources = creep.room.find(FIND_SOURCES);
 
-			if (!creep.memory.source) {
-				for (source in sources) {
-					if (_.filter(Game.creeps, (creep) =>
-							(creep.memory.role == 'harvester') &&
-							(creep.memory.source == source)
-					).length != 2) {
-						creep.memory.source = source;
-					}
-				}
-			}
-			if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(sources[creep.memory.source]);
+			if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+				creep.moveTo(sources[0]);
 			}
 
 			// var spawns = creep.room.find(FIND_STRUCTURES, {
