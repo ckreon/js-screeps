@@ -4,12 +4,26 @@ var roleUpgrader = {
 	run: function(creep) {
 
 		if (creep.memory.harvesting) {
-			var sources = creep.room.find(FIND_SOURCES);
+			var spawns = creep.room.find(FIND_STRUCTURES, {
+				filter: (structure) => {
+					return (
+						(structure.structureType == STRUCTURE_CONTAINER) &&
+						(structure.store[RESOURCE_ENERGY] > creep.carryCapacity));
+				}
+			});
 
-			if (creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(sources[1]);
+			if(spawns.length) {
+				var target = creep.pos.findClosestByRange(spawns);
+
+				if (!(creep.pos.isNearTo(target))) {
+					creep.moveTo(target);
+				}
+				else {
+					creep.withdraw(target, RESOURCE_ENERGY,
+												(creep.carryCapacity - _.sum(creep.carry)));
+				}
 			}
-			else if (creep.carry.energy == creep.carryCapacity) {
+			if (creep.carry.energy == creep.carryCapacity) {
 				creep.say('Upgrading');
 			  creep.memory.harvesting = false;
 			}

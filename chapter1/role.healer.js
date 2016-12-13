@@ -1,6 +1,6 @@
-var roleHealer = require('role.healer');
+var roleUpgrader = require('role.upgrader');
 
-var roleBuilder = {
+var roleHealer = {
 
 	/** @param {Creep} creep **/
 	run: function(creep) {
@@ -10,7 +10,7 @@ var roleBuilder = {
 				filter: (structure) => {
 					return (
 								 (structure.structureType == STRUCTURE_CONTAINER) &&
-								 (structure.store[RESOURCE_ENERGY] > creep.carryCapacity));
+								 (structure.store[RESOURCE_ENERGY] > 0));
 				}
 			});
 
@@ -31,15 +31,22 @@ var roleBuilder = {
 			}
 		}
 		else {
-		  var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+		  var targets = creep.room.find(FIND_STRUCTURES, {
+		  	filter: function(structure) {
+		  		return (
+		  			(structure.hits < structure.hitsMax) &&
+		  			(structure.structureType != STRUCTURE_WALL) &&
+		  			(structure.structureType != STRUCTURE_RAMPART));
+		  	}
+		  });
 
 			if (targets.length) {
 				var target = creep.pos.findClosestByRange(targets);
-				if (creep.build(target) == ERR_NOT_IN_RANGE) {
+				if (creep.repair(target) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(target);
 				}
 				else {
-					roleHealer.run(creep);
+					roleUpgrader.run(creep);
 				}
 				if (creep.carry.energy == 0) {
 					creep.say('Harvesting');
@@ -50,6 +57,6 @@ var roleBuilder = {
 
 	} // function
 
-}; // roleBuilder
+} // roleHealer
 
-module.exports = roleBuilder;
+module.exports = roleHealer;

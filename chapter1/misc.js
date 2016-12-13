@@ -17,6 +17,23 @@ Game.spawns['Spawn1'].room.createConstructionSite( 23, 22, STRUCTURE_TOWER );
 // Suicide a unit
 Game.creeps['UnitName'].suicide();
 
+// Filter a list of structures
+var targets = creep.room.find(FIND_STRUCTURES, {
+	filter: (structure) => {
+		return (structure.structureType == STRUCTURE_EXTENSION ||
+						structure.structureType == STRUCTURE_SPAWN ||
+						structure.structureType == STRUCTURE_TOWER) &&
+						structure.energy < structure.energyCapacity;
+	}
+});
+
+// log various stats to console each tick
+console.log('Harvesters: '+harvesters.length);
+for (var name in Game.rooms) {
+	console.log(
+		'Room "'+name+'" has '+Game.rooms[name].energyAvailable+' energy');
+}
+
 // Spawn a harvester unit
 Game.spawns['Spawn1'].createCreep( [WORK, CARRY, MOVE, MOVE], 'Harvester1' );
 
