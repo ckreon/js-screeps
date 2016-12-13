@@ -65,6 +65,7 @@ var roleBuilder = {
 			else {
 					roleHealer.run(creep);
 			}
+		}
 
 	} // function
 
