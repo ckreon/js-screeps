@@ -3,7 +3,7 @@ module.exports.builders = function() {
 												(creep.memory.role == 'builder'));
 	if (builder_count.length < 4) {
 		var newName = Game.spawns['Spawn1'].createCreep(
-			[WORK, CARRY, CARRY, MOVE, MOVE],
+			[WORK, CARRY, MOVE, MOVE],
 			undefined, { role: 'builder', harvesting: 'true' });
 
 		console.log('Spawning new Builder: ' + newName);
@@ -15,7 +15,7 @@ module.exports.harvesters = function() {
 													(creep.memory.role == 'harvester'));
 	if (harvester_count.length < 4) {
 		var newName = Game.spawns['Spawn1'].createCreep(
-			[WORK, CARRY, CARRY, MOVE, MOVE],
+			[WORK, CARRY, MOVE, MOVE],
 			undefined, { role: 'harvester', harvesting: 'true' });
 
 		console.log('Spawning new Harvester: ' + newName);
@@ -39,7 +39,7 @@ module.exports.healers = function() {
 											 (creep.memory.role == 'healer'));
 	if (healer_count.length < 0) {
 		var newName = Game.spawns['Spawn1'].createCreep(
-			[WORK, CARRY, CARRY, MOVE, MOVE],
+			[WORK, CARRY, MOVE, MOVE],
 			undefined, { role: 'healer', harvesting: 'true' });
 
 		console.log('Spawning new Healer: ' + newName);
@@ -51,7 +51,7 @@ module.exports.upgraders = function() {
 												 (creep.memory.role == 'upgrader'));
 	if (upgrader_count.length < 1) {
 		var newName = Game.spawns['Spawn1'].createCreep(
-			[WORK, CARRY, CARRY, MOVE, MOVE],
+			[WORK, CARRY, MOVE, MOVE],
 			undefined, { role: 'upgrader', harvesting: 'true' });
 
 		console.log('Spawning new Upgrader: ' + newName);
