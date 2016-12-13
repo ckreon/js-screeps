@@ -1,6 +1,5 @@
-var builders = {
+module.exports.builders = function() {
 
-	run: function() {
 		var builder_count = _.filter(Game.creeps, (creep) =>
 													(creep.memory.role == 'builder'));
 		if (builder_count.length < 2) {
@@ -13,9 +12,7 @@ var builders = {
 	} // function
 }; // builders
 
-var harvesters = {
-
-	run: function() {
+module.exports.harvesters = function() {
 		var harvester_count = _.filter(Game.creeps, (creep) =>
 														(creep.memory.role == 'harvester'));
 		if (harvester_count.length < 2) {
@@ -28,9 +25,7 @@ var harvesters = {
 	} // function
 }; // harvesters
 
-var haulers = {
-
-	run: function() {
+module.exports.haulers = function() {
 		var hauler_count = _.filter(Game.creeps, (creep) =>
 												 (creep.memory.role == 'hauler'));
 		if (hauler_count.length < 2) {
@@ -43,9 +38,7 @@ var haulers = {
 	} // function
 }; // haulers
 
-var healers = {
-
-	run: function() {
+module.exports.healers = function() {
 		var healer_count = _.filter(Game.creeps, (creep) =>
 												 (creep.memory.role == 'healer'));
 		if (healer_count.length < 0) {
@@ -58,9 +51,7 @@ var healers = {
 	} // function
 }; // healers
 
-var upgraders = {
-
-	run: function() {
+module.exports.upgraders = function() {
 		var upgrader_count = _.filter(Game.creeps, (creep) =>
 													 (creep.memory.role == 'upgrader'));
 		if (upgrader_count.length < 1) {
@@ -73,9 +64,3 @@ var upgraders = {
 
 	} // function
 }; // upgraders
-
-module.exports = builders;
-module.exports = harvesters;
-module.exports = haulers;
-module.exports = healers;
-module.exports = upgraders;
