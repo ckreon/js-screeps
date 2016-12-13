@@ -26,7 +26,7 @@ var roleBuilder = {
 												(creep.carryCapacity - _.sum(creep.carry)));
 				}
 			}
-			else if (creep.carry.energy == creep.carryCapacity) {
+			if (creep.carry.energy == creep.carryCapacity) {
 					creep.say('Building');
 			    creep.memory.harvesting = false;
 			}
