@@ -35,7 +35,7 @@ module.exports.loop = function () {
 	// spawn upgraders
 	ai.spawning.upgraders();
 	// spawn builders
-	//ai.spawning.builders();
+	ai.spawning.builders();
 	// spawn healers
 	//ai.spawning.healers();
 
