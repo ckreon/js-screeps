@@ -25,9 +25,10 @@ var roleHarvester = {
 			}
 		}
 		else {
-			var targets = creep.pos.findInRange(FIND_STRUCTURES, 1, {
+			var targets = creep.pos.findClosestByRange(FIND_STRUCTURES, {
 				filter: (structure) => {
-					return (structure.structureType == STRUCTURE_CONTAINER);
+					return ((structure.structureType == STRUCTURE_CONTAINER) ||
+									(structure.structureType == STRUCTURE_SPAWN);
 				}
 			});
 			
