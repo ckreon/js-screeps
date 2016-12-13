@@ -3,7 +3,7 @@ var roleHealer = require('role.healer');
 var roleBuilder = {
 
 	/** @param {Creep} creep **/
-	run: function(creep, target) {
+	run: function(creep) {
 
 		if (creep.memory.harvesting) {
 			var sources = creep.room.find(FIND_SOURCES);
