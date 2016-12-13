@@ -16,7 +16,7 @@ var roleBuilder = {
 			});
 
 			//if (storage.length > 0) {
-			if (false) {
+			if (false) { // bypass this temporarily
 				var target = creep.pos.findClosestByRange(storage);
 
 				if (!(creep.pos.isNearTo(target))) {
