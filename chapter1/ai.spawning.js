@@ -10,7 +10,7 @@ module.exports.builders = function() {
 			console.log('Spawning new Builder: ' + newName);
 		}
 	} // function
-}; // builders
+} // builders
 
 module.exports.harvesters = function() {
 		var harvester_count = _.filter(Game.creeps, (creep) =>
@@ -23,7 +23,7 @@ module.exports.harvesters = function() {
 			console.log('Spawning new Harvester: ' + newName);
 		}
 	} // function
-}; // harvesters
+} // harvesters
 
 module.exports.haulers = function() {
 		var hauler_count = _.filter(Game.creeps, (creep) =>
@@ -36,7 +36,7 @@ module.exports.haulers = function() {
 			console.log('Spawning new Hauler: ' + newName);
 		}
 	} // function
-}; // haulers
+} // haulers
 
 module.exports.healers = function() {
 		var healer_count = _.filter(Game.creeps, (creep) =>
@@ -49,7 +49,7 @@ module.exports.healers = function() {
 			console.log('Spawning new Healer: ' + newName);
 		}
 	} // function
-}; // healers
+} // healers
 
 module.exports.upgraders = function() {
 		var upgrader_count = _.filter(Game.creeps, (creep) =>
@@ -63,4 +63,4 @@ module.exports.upgraders = function() {
 		}
 
 	} // function
-}; // upgraders
+} // upgraders

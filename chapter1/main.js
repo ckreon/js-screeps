@@ -4,15 +4,15 @@ var roles = {
 	hauler:		 require('role.hauler'),
 	healer:		 require('role.healer'),
 	upgrader:	 require('role.upgrader')
-}
+};
 
 var structures = {
 	tower:		 require('structure.tower')
-}
+};
 
 var ai = {
 	spawning:	 require('ai.spawning')
-}
+};
 
 module.exports.loop = function () {
 
