@@ -52,13 +52,13 @@ var roleHealer = {
 				if (creep.repair(target) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(target);
 				}
-				else {
-					roleUpgrader.run(creep);
-				}
-				if (creep.carry.energy == 0) {
+				else if (creep.carry.energy == 0) {
 					creep.say('Harvesting');
 					creep.memory.harvesting = true;
 				}
+			}
+			else {
+				roleUpgrader.run(creep);
 			}
 		}
 
