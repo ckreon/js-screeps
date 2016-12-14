@@ -1,17 +1,17 @@
 var roles = {
-	builder:	 	require('role.builder'),
-	harvester:	require('role.harvester'),
-	hauler:		 	require('role.hauler'),
-	healer:		 	require('role.healer'),
-	upgrader:	 	require('role.upgrader')
+	builder:	 require('role.builder'),
+	harvester: require('role.harvester'),
+	hauler:		 require('role.hauler'),
+	healer:		 require('role.healer'),
+	upgrader:	 require('role.upgrader')
 };
 
 var structures = {
-	tower:		 	require('structure.tower')
+	tower:		 require('structure.tower')
 };
 
 var ai = {
-	spawning:	 	require('ai.spawning')
+	spawn:	 	 require('ai.spawn')
 };
 
 module.exports.loop = function () {
@@ -29,19 +29,19 @@ module.exports.loop = function () {
   // UNIT SPAWNING
 
 	// spawn harvesters
-	ai.spawning.harvesters();
+	ai.spawn.harvesters();
 	// spawn haulers
-	//ai.spawning.haulers();
+	//ai.spawn.haulers();
 	// spawn upgraders
-	ai.spawning.upgraders();
+	//ai.spawn.upgraders();
 	// spawn builders
-	ai.spawning.builders();
+	//ai.spawn.builders();
 	// spawn healers
-	ai.spawning.healers();
+	//ai.spawn.healers();
 
   // ASSIGN UNITS & STRUCTURES
 
-	// iterate through all creeps and assign roles
+	// iterate through creeps and assign roles
 	for (var name in Game.creeps) {
 		var creep = Game.creeps[name];
 
