@@ -6,6 +6,7 @@ var roleHealer = {
 	run: function(creep) {
 
 		if (creep.memory.harvesting) {
+			var sources = creep.room.find(FIND_SOURCES);
 			var spawns = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (
@@ -25,7 +26,13 @@ var roleHealer = {
 												(creep.carryCapacity - _.sum(creep.carry)));
 				}
 			}
-			else if (creep.carry.energy == creep.carryCapacity) {
+			else {
+				var target = creep.pos.findClosestByRange(sources);
+				if ((creep.harvest(target)) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(target);
+				}
+			}
+			if (creep.carry.energy == creep.carryCapacity) {
 					creep.say('Building');
 			    creep.memory.harvesting = false;
 			}
