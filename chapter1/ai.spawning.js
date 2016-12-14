@@ -13,7 +13,7 @@ module.exports.builders = function() {
 module.exports.harvesters = function() {
 	var harvester_count = _.filter(Game.creeps, (creep) =>
 													(creep.memory.role == 'harvester'));
-	if (harvester_count.length < 4) {
+	if (harvester_count.length < 3) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, CARRY, MOVE, MOVE],
 			undefined, { role: 'harvester', harvesting: 'true' });
@@ -37,7 +37,7 @@ module.exports.haulers = function() {
 module.exports.healers = function() {
 	var healer_count = _.filter(Game.creeps, (creep) =>
 											 (creep.memory.role == 'healer'));
-	if (healer_count.length < 0) {
+	if (healer_count.length < 1) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, CARRY, MOVE, MOVE],
 			undefined, { role: 'healer', harvesting: 'true' });

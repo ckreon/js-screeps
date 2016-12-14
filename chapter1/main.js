@@ -1,17 +1,17 @@
 var roles = {
-	builder:	 require('role.builder'),
-	harvester: require('role.harvester'),
-	hauler:		 require('role.hauler'),
-	healer:		 require('role.healer'),
-	upgrader:	 require('role.upgrader')
+	builder:	 	require('role.builder'),
+	harvester:	require('role.harvester'),
+	hauler:		 	require('role.hauler'),
+	healer:		 	require('role.healer'),
+	upgrader:	 	require('role.upgrader')
 };
 
 var structures = {
-	tower:		 require('structure.tower')
+	tower:		 	require('structure.tower')
 };
 
 var ai = {
-	spawning:	 require('ai.spawning')
+	spawning:	 	require('ai.spawning')
 };
 
 module.exports.loop = function () {
@@ -37,7 +37,7 @@ module.exports.loop = function () {
 	// spawn builders
 	ai.spawning.builders();
 	// spawn healers
-	//ai.spawning.healers();
+	ai.spawning.healers();
 
   // ASSIGN UNITS & STRUCTURES
 
