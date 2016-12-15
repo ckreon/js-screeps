@@ -11,7 +11,7 @@ var structures = {
 };
 
 var ai = {
-	spawning:	require('ai.spawning')
+	spawn:	require('ai.spawn')
 };
 
 module.exports.loop = function () {
@@ -29,15 +29,15 @@ module.exports.loop = function () {
   // UNIT SPAWNING
 
 	// spawn healers
-	ai.spawning.healers();
+	ai.spawn.healers();
 	// spawn builders
-	ai.spawning.builders();
+	ai.spawn.builders();
 	// spawn upgraders
-	ai.spawning.upgraders();
+	ai.spawn.upgraders();
 	// spawn haulers
-	//ai.spawning.haulers();
+	//ai.spawn.haulers();
 	// spawn harvesters
-	ai.spawning.harvesters();
+	ai.spawn.harvesters();
 
   // ASSIGN UNITS & STRUCTURES
 
