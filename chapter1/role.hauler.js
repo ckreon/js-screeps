@@ -81,7 +81,7 @@ var roleHauler = {
 					creep.moveTo(target);
 				}
 			}
-			if (creep.carry.energy == 0) {
+			if (creep.carry.energy < creep.carryCapacity) {
 				creep.say('Harvesting');
 			  creep.memory.harvesting = true;
 			}
