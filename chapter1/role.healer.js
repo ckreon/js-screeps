@@ -27,13 +27,14 @@ var roleHealer = {
 				}
 			}
 			else {
-				var target = creep.pos.findClosestByRange(sources);
-				if ((creep.harvest(target)) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(target);
+				creep.memory.source = sources[0];
+
+				if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(sources[creep.memory.source]);
 				}
 			}
 			if (creep.carry.energy == creep.carryCapacity) {
-					creep.say('Building');
+					creep.say('Healing');
 			    creep.memory.harvesting = false;
 			}
 		}
