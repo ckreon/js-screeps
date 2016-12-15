@@ -7,7 +7,6 @@ var roleBuilder = {
 	run: function(creep) {
 
 		if (creep.memory.harvesting) {
-			var sources = creep.room.find(FIND_SOURCES);
 			var storage = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (
@@ -28,6 +27,7 @@ var roleBuilder = {
 				}
 			}
 			else {
+				var sources = creep.room.find(FIND_SOURCES);
 				creep.memory.source = sources[0];
 
 				if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
