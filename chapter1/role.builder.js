@@ -12,7 +12,7 @@ var roleBuilder = {
 				filter: (structure) => {
 					return (
 								 (structure.structureType == STRUCTURE_SPAWN) &&
-								 (structure.energy > 200));
+								 (Game.spawns.Spawn1.room.energyAvailable > 400));
 				}
 			});
 
