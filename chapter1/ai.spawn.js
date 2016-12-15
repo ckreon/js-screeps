@@ -1,8 +1,15 @@
+// SET UNIT NUMBERS HERE
+var builders = 3;
+var harvesters = 3;
+var haulers = 2;
+var healers = 2;
+var upgraders = 4;
+
 // BUILDERS
 module.exports.builders = function() {
 	var builder_count = _.filter(Game.creeps, (creep) =>
 												(creep.memory.role == 'builder'));
-	if (builder_count.length < 3) {
+	if (builder_count.length < builders) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
 			undefined,
@@ -16,7 +23,7 @@ module.exports.builders = function() {
 module.exports.harvesters = function() {
 	var harvester_count = _.filter(Game.creeps, (creep) =>
 													(creep.memory.role == 'harvester'));
-	if (harvester_count.length < 3) {
+	if (harvester_count.length < harvesters) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
 			undefined,
@@ -30,7 +37,7 @@ module.exports.harvesters = function() {
 module.exports.haulers = function() {
 	var hauler_count = _.filter(Game.creeps, (creep) =>
 											 (creep.memory.role == 'hauler'));
-	if (hauler_count.length < 2) {
+	if (hauler_count.length < haulers) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE],
 			undefined,
@@ -44,7 +51,7 @@ module.exports.haulers = function() {
 module.exports.healers = function() {
 	var healer_count = _.filter(Game.creeps, (creep) =>
 											 (creep.memory.role == 'healer'));
-	if (healer_count.length < 1) {
+	if (healer_count.length < healers) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
 			undefined,
@@ -58,7 +65,7 @@ module.exports.healers = function() {
 module.exports.upgraders = function() {
 	var upgrader_count = _.filter(Game.creeps, (creep) =>
 												 (creep.memory.role == 'upgrader'));
-	if (upgrader_count.length < 2) {
+	if (upgrader_count.length < upgraders) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
 			undefined,
