@@ -5,44 +5,27 @@ var roleUpgrader = {
 
 		if (creep.memory.harvesting) {
 			var sources = creep.room.find(FIND_SOURCES);
-			var storage = creep.room.find(FIND_STRUCTURES, {
-				filter: (structure) => {
-					return (
-								((structure.structureType == STRUCTURE_CONTAINER) &&
-								 (structure.store[RESOURCE_ENERGY] > 0)) ||
-							 (((structure.structureType == STRUCTURE_EXTENSION) ||
-								 (structure.structureType == STRUCTURE_SPAWN)) &&
-								 (Game.spawns.Spawn1.room.energyAvailable > 550)));
-				}
-			});
+			var energy = creep.pos.findInRange(FIND_DROPPED_ENERGY, 3);
 
-			if (storage.length > 0) {
-				var target = creep.pos.findClosestByRange(storage);
-
-				if (!(creep.pos.isNearTo(target))) {
-					creep.moveTo(target);
-				}
-				else {
-					creep.withdraw(target, RESOURCE_ENERGY,
-												(creep.carryCapacity - _.sum(creep.carry)));
-				}
+			if (energy.length) {
+				creep.pickup(energy[0]);
 			}
-			else {
+
+			if (!creep.memory.source) {
 				for (source in sources) {
 					if (_.filter(Game.creeps, (creep) =>
-											(creep.memory.sourceId == source.id)
+							(creep.memory.source == source)
 					).length < 4) {
-						creep.memory.sourceId = source.id;
+						creep.memory.source = source;
 					}
 				}
-				if (creep.harvest(
-						Game.getObjectById(creep.memory.sourceId)) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(Game.getObjectById(creep.memory.sourceId));
-				}
 			}
-			if (creep.carry.energy == creep.carryCapacity) {
-					creep.say('Upgrading');
-			    creep.memory.harvesting = false;
+			if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
+				creep.moveTo(sources[creep.memory.source]);
+			}
+			else if (creep.carry.energy == creep.carryCapacity) {
+				creep.say('Upgrading');
+			  creep.memory.harvesting = false;
 			}
 		}
 		else {

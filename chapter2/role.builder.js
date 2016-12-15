@@ -8,14 +8,21 @@ var roleBuilder = {
 
 		if (creep.memory.harvesting) {
 			var sources = creep.room.find(FIND_SOURCES);
+			var energy = creep.pos.findInRange(FIND_DROPPED_ENERGY, 3);
 			var storage = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (
-								 (structure.structureType == STRUCTURE_SPAWN) &&
-								 (structure.energy > 250));
+								((structure.structureType == STRUCTURE_CONTAINER) &&
+								 (structure.store[RESOURCE_ENERGY] > 0)) ||
+							 (((structure.structureType == STRUCTURE_EXTENSION)||
+								 (structure.structureType == STRUCTURE_SPAWN)) &&
+								 (Game.spawns.Spawn1.room.energyAvailable > 550)));
 				}
 			});
 
+			if (energy.length) {
+				creep.pickup(energy[0]);
+			}
 			if (storage.length > 0) {
 				var target = creep.pos.findClosestByRange(storage);
 
@@ -27,19 +34,20 @@ var roleBuilder = {
 												(creep.carryCapacity - _.sum(creep.carry)));
 				}
 			}
-			else if (sources.length) {
+			else {
 				for (source in sources) {
 					if (_.filter(Game.creeps, (creep) =>
-											(creep.memory.source == source)
+											(creep.memory.sourceId == source.id)
 					).length < 4) {
-						creep.memory.source = source;
+						creep.memory.sourceId = source.id;
 					}
 				}
-				if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(sources[creep.memory.source]);
+				if (creep.harvest(
+						Game.getObjectById(creep.memory.sourceId)) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(Game.getObjectById(creep.memory.sourceId));
 				}
 			}
-			else if (creep.carry.energy == creep.carryCapacity) {
+			if (creep.carry.energy == creep.carryCapacity) {
 					creep.say('Building');
 			    creep.memory.harvesting = false;
 			}

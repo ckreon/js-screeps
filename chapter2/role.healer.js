@@ -7,16 +7,23 @@ var roleHealer = {
 
 		if (creep.memory.harvesting) {
 			var sources = creep.room.find(FIND_SOURCES);
-			var spawns = creep.room.find(FIND_STRUCTURES, {
+			var energy = creep.pos.findInRange(FIND_DROPPED_ENERGY, 3);
+			var storage = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (
-								 (structure.structureType == STRUCTURE_CONTAINER) &&
-								 (structure.store[RESOURCE_ENERGY] > 0));
+								((structure.structureType == STRUCTURE_CONTAINER) &&
+							 	 (structure.store[RESOURCE_ENERGY] > 0)) ||
+							 (((structure.structureType == STRUCTURE_EXTENSION) ||
+								 (structure.structureType == STRUCTURE_SPAWN)) &&
+								 (Game.spawns.Spawn1.room.energyAvailable > 550)));
 				}
 			});
 
-			if (spawns.length) {
-				var target = creep.pos.findClosestByRange(spawns);
+			if (energy.length) {
+				creep.pickup(energy[0]);
+			}
+			if (storage.length > 0) {
+				var target = creep.pos.findClosestByRange(storage);
 
 				if (!(creep.pos.isNearTo(target))) {
 					creep.moveTo(target);
@@ -33,7 +40,7 @@ var roleHealer = {
 				}
 			}
 			if (creep.carry.energy == creep.carryCapacity) {
-					creep.say('Building');
+					creep.say('Healing');
 			    creep.memory.harvesting = false;
 			}
 		}
