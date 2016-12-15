@@ -6,8 +6,7 @@ var roleHealer = {
 	run: function(creep) {
 
 		if (creep.memory.harvesting) {
-			var sources = creep.room.find(FIND_SOURCES);
-			var spawns = creep.room.find(FIND_STRUCTURES, {
+			var storage = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (
 								 (structure.structureType == STRUCTURE_CONTAINER) &&
@@ -15,8 +14,8 @@ var roleHealer = {
 				}
 			});
 
-			if (spawns.length) {
-				var target = creep.pos.findClosestByRange(spawns);
+			if (storage.length) {
+				var target = creep.pos.findClosestByRange(storage);
 
 				if (!(creep.pos.isNearTo(target))) {
 					creep.moveTo(target);
@@ -27,7 +26,8 @@ var roleHealer = {
 				}
 			}
 			else {
-				creep.memory.source = sources[0];
+				var sources = creep.room.find(FIND_SOURCES);
+				creep.memory.source = 0;
 
 				if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(sources[creep.memory.source]);
