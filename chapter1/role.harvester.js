@@ -6,9 +6,9 @@ var roleHarvester = {
 		if (creep.memory.harvesting) {
 			var sources = creep.room.find(FIND_SOURCES);
 			creep.memory.source = sources[0];
-			
-			if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(sources[creep.memory.source]);
+
+			if (creep.harvest(creep.memory.source) == ERR_NOT_IN_RANGE) {
+				creep.moveTo(creep.memory.source);
 			}
 			if (creep.carry.energy == creep.carryCapacity) {
 				creep.say('Depositing');
