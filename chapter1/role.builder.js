@@ -45,11 +45,7 @@ var roleBuilder = {
 			}
 		}
 		else {
-		  var targets = creep.room.find(FIND_CONSTRUCTION_SITES, {
-		  	filter: (structure) => {
-		  		return (!(structure.structureType == STRUCTURE_CONTAINER));
-		  	}
-		  });
+		  var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
 
 			if (targets.length) {
 				var target = creep.pos.findClosestByRange(targets);
