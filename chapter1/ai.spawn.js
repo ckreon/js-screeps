@@ -5,7 +5,7 @@ module.exports.builders = function() {
 	if (builder_count.length < 3) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
-			'Builder'+(builder_count.length + 1),
+			'Builder'+(this.builder_count.length + 1),
 			{ role: 'builder', harvesting: 'true' });
 
 		console.log('Spawning new Builder: ' + newName);
