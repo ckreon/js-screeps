@@ -38,27 +38,54 @@ var roleHealer = {
 			}
 		}
 		else {
-		  var targets = creep.room.find(FIND_STRUCTURES, {
-		  	filter: function(structure) {
-		  		return (
-		  			(structure.hits < structure.hitsMax) &&
-		  			(structure.structureType != STRUCTURE_WALL) &&
-		  			(structure.structureType != STRUCTURE_RAMPART));
-		  	}
-		  });
-
-			if (targets.length) {
-				var target = creep.pos.findClosestByRange(targets);
-				if (creep.repair(target) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(target);
+		  var repairitnow = creep.room.find(FIND_STRUCTURES, { 
+				filter: (structure) => { 
+					return (
+						(structure.hits < 650) && (structure.hits > 0));
 				}
-				else if (creep.carry.energy == 0) {
-					creep.say('Harvesting');
-					creep.memory.harvesting = true;
+			});
+
+			if (repairitnow.length > 0) {
+				if (creep.repair(repairitnow[0]) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(repairitnow[0]);
 				}
 			}
 			else {
-				roleUpgrader.run(creep);
+				var repairit = creep.room.find(FIND_STRUCTURES, { 
+					filter: (structure) => { 
+						return (
+							(structure.hits < structure.hitsMax) &&
+							(structure.hits > 0) &&
+							(structure.structureType != STRUCTURE_WALL) &&
+							(structure.structureType != STRUCTURE_RAMPART));
+					}
+				});
+				var repairwall = creep.room.find(FIND_STRUCTURES, { 
+					filter: (structure) => { 
+						return (
+							(structure.structureType == STRUCTURE_RAMPART) &&
+							(structure.hits < structure.hitsMax) &&
+						 ((structure.hits > 0) || (structure.hits < structure.hitsMax)) &&
+							(structure.hits > 0) &&
+							(structure.structureType == STRUCTURE_WALL));
+					}
+				});
+
+				if (repairit.length > 0) {
+					if (creep.repair(repairit[0]) == ERR_NOT_IN_RANGE) {
+						creep.moveTo(repairit[0]);
+					}
+				}
+				else {
+					if (repairwall.length > 0) {
+						if (creep.repair(repairwall[repairwall.length - 1]) == ERR_NOT_IN_RANGE) {
+							creep.moveTo(repairwall[0]);
+						}
+					}
+					else {
+						roleUpgrader.run(creep);
+					}
+				}
 			}
 		}
 
