@@ -4,24 +4,38 @@ var roleUpgrader = {
 	run: function(creep) {
 
 		if (creep.memory.harvesting) {
-			var sources = creep.room.find(FIND_SOURCES);
 			var energy = creep.pos.findInRange(FIND_DROPPED_ENERGY, 3);
 
-			if (energy.length) {
-				creep.pickup(energy[0]);
-			}
+			if (energy.length == 0) {
+				var storage = creep.room.find(FIND_STRUCTURES, {
+					filter: (structure) => {
+						return (
+							(structure.structureType == STRUCTURE_CONTAINER) &&
+							(structure.store[RESOURCE_ENERGY] > creep.carryCapacity));
+					}
+				});
 
-			if (!creep.memory.source) {
-				for (source in sources) {
-					if (_.filter(Game.creeps, (creep) =>
-							(creep.memory.source == source)
-					).length < 5) {
-						creep.memory.source = source;
+				if (storage.length == 0) {
+					var sources = creep.room.find(FIND_SOURCES);
+
+					if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+						creep.moveTo(sources[0]);
+					}
+				}
+				else {
+					var target = creep.pos.findClosestByRange(storage);
+
+					if (!creep.pos.isNearTo(target)) {
+						creep.moveTo(target);
+					}
+					else {
+						creep.withdraw(target, RESOURCE_ENERGY,
+													(creep.carryCapacity - _.sum(creep.carry)));
 					}
 				}
 			}
-			if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(sources[creep.memory.source]);
+			else {
+				creep.pickup(energy[0]);
 			}
 			if (creep.carry.energy == creep.carryCapacity) {
 				creep.say('Upgrading');
