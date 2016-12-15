@@ -12,7 +12,7 @@ var roleBuilder = {
 				filter: (structure) => {
 					return (
 								 (structure.structureType == STRUCTURE_SPAWN) &&
-								 (structure.energy > 250));
+								 (structure.energy > 550));
 				}
 			});
 
