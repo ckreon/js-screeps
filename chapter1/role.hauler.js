@@ -9,7 +9,7 @@ var roleHauler = {
 					return (
 						(structure.structureType == STRUCTURE_CONTAINER) &&
 						(structure.store[RESOURCE_ENERGY] > creep.carryCapacity) &&
-						(structure.pos.findInRange(FIND_SOURCE, 2).length != 0));
+						(structure.pos.findInRange(FIND_SOURCES, 2).length != 0));
 				}
 			});
 
