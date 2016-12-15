@@ -11,9 +11,8 @@ var roleBuilder = {
 			var storage = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (
-								((structure.structureType == STRUCTURE_SPAWN) ||
-								 (structure.structureType == STRUCTURE_EXTENSION)) &&
-								 (Game.spawns.Spawn1.room.energyAvailable > 500));
+								 (structure.structureType == STRUCTURE_SPAWN) &&
+								 (structure.energy > 200));
 				}
 			});
 
