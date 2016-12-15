@@ -29,7 +29,7 @@ var roleHarvester = {
 			}
 		}
 		else {
-			var targets = creep.pos.findInRange(FIND_STRUCTURES, 1, {
+			var targets = creep.pos.findInRange(FIND_STRUCTURES, 3, {
 				filter: (structure) => {
 					return (structure.structureType == STRUCTURE_CONTAINER);
 				}
