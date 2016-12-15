@@ -3,11 +3,11 @@ var roleHauler = {
 	/** @param {Creep} creep **/
 	run: function(creep) {
 
-		if (creep.memory.harvesting && (creep.carry.energy == creep.carryCapacity) {
+		if (creep.memory.harvesting && (creep.carry.energy == creep.carryCapacity)) {
 	  	creep.memory.harvesting = false;
 	  	creep.say('Depositing');
 		}
-		if (!(creep.memory.hauling) && (creep.carry.energy == 0) {
+		if (!(creep.memory.hauling) && (creep.carry.energy == 0)) {
 		  creep.memory.harvesting = true;
 		  creep.say('Harvesting');
 		}
