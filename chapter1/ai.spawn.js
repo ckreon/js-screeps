@@ -30,7 +30,7 @@ module.exports.harvesters = function() {
 module.exports.haulers = function() {
 	var hauler_count = _.filter(Game.creeps, (creep) =>
 											 (creep.memory.role == 'hauler'));
-	if (hauler_count.length < 1) {
+	if (hauler_count.length < 2) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE],
 			undefined,
