@@ -16,7 +16,7 @@ module.exports.builders = function() {
 module.exports.harvesters = function() {
 	var harvester_count = _.filter(Game.creeps, (creep) =>
 													(creep.memory.role == 'harvester'));
-	if (harvester_count.length < 2) {
+	if (harvester_count.length < 3) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
 			undefined,
