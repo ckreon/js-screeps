@@ -13,7 +13,7 @@ var roleHarvester = {
 					if (_.filter(Game.creeps, (creep) =>
 						 	 				(creep.memory.role == 'harvester') &&
 						 	 				(creep.memory.source == sources[1])
-						 	 				).length <1) {
+						 	 				).length > 1) {
 						creep.memory.source = sources[0];
 					}
 					else {
