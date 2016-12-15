@@ -27,14 +27,9 @@ var roleBuilder = {
 												(creep.carryCapacity - _.sum(creep.carry)));
 				}
 			}
-			else if (sources.length) {
-				for (source in sources) {
-					if (_.filter(Game.creeps, (creep) =>
-											(creep.memory.source == source)
-					).length < 5) {
-						creep.memory.source = source;
-					}
-				}
+			else {
+				creep.memory.source = sources[0];
+
 				if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(sources[creep.memory.source]);
 				}
