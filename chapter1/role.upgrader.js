@@ -23,7 +23,7 @@ var roleUpgrader = {
 			if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
 				creep.moveTo(sources[creep.memory.source]);
 			}
-			else if (creep.carry.energy == creep.carryCapacity) {
+			if (creep.carry.energy == creep.carryCapacity) {
 				creep.say('Upgrading');
 			  creep.memory.harvesting = false;
 			}

@@ -39,7 +39,7 @@ var roleBuilder = {
 					creep.moveTo(sources[creep.memory.source]);
 				}
 			}
-			else if (creep.carry.energy == creep.carryCapacity) {
+			if (creep.carry.energy == creep.carryCapacity) {
 					creep.say('Building');
 			    creep.memory.harvesting = false;
 			}
