@@ -31,7 +31,7 @@ var roleBuilder = {
 				for (source in sources) {
 					if (_.filter(Game.creeps, (creep) =>
 											(creep.memory.source == source)
-					).length < 4) {
+					).length < 5) {
 						creep.memory.source = source;
 					}
 				}
