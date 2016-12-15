@@ -5,8 +5,16 @@ var roleHarvester = {
 
 		if (creep.memory.harvesting) {
 			var sources = creep.room.find(FIND_SOURCES);
-			creep.memory.source = 0;
 
+			if (_.filter(Game.creeps, (creep) =>
+				 	 				(creep.memory.role == 'harvester') &&
+				 	 				(creep.memory.source == 0)
+				 	 				).length < 2) {
+				creep.memory.source = 0;
+			}
+			else {
+				creep.memory.source = 1;
+			}
 			if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
 				creep.moveTo(sources[creep.memory.source]);
 			}
