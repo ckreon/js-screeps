@@ -35,7 +35,7 @@ module.exports.loop = function () {
 	// spawn upgraders
 	ai.spawn.upgraders();
 	// spawn haulers
-	//ai.spawn.haulers();
+	ai.spawn.haulers();
 	// spawn harvesters
 	ai.spawn.harvesters();
 
