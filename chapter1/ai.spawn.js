@@ -2,7 +2,7 @@
 module.exports.builders = function() {
 	var builder_count = _.filter(Game.creeps, (creep) =>
 												(creep.memory.role == 'builder'));
-	if (builder_count.length < 2) {
+	if (builder_count.length < 3) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
 			'Builder'+(builder_count.length + 1),
@@ -16,7 +16,7 @@ module.exports.builders = function() {
 module.exports.harvesters = function() {
 	var harvester_count = _.filter(Game.creeps, (creep) =>
 													(creep.memory.role == 'harvester'));
-	if (harvester_count.length < 3) {
+	if (harvester_count.length < 4) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
 			'Harvester'+(harvester_count.length + 1),
@@ -58,7 +58,7 @@ module.exports.healers = function() {
 module.exports.upgraders = function() {
 	var upgrader_count = _.filter(Game.creeps, (creep) =>
 												 (creep.memory.role == 'upgrader'));
-	if (upgrader_count.length < 1) {
+	if (upgrader_count.length < 2) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
 			'Upgrader'+(builder_count.length + 1),
