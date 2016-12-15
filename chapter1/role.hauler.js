@@ -3,6 +3,15 @@ var roleHauler = {
 	/** @param {Creep} creep **/
 	run: function(creep) {
 
+		if (creep.memory.harvesting && (creep.carry.energy == creep.carryCapacity) {
+	  	creep.memory.harvesting = false;
+	  	creep.say('Depositing');
+		}
+		if (!(creep.memory.hauling) && (creep.carry.energy == 0) {
+		  creep.memory.harvesting = true;
+		  creep.say('Harvesting');
+		}
+
 		if (creep.memory.harvesting) {
 			var energy = creep.room.find(FIND_DROPPED_ENERGY, {
 				filter: (res) => {
@@ -41,10 +50,6 @@ var roleHauler = {
 					creep.pickup(target);
 				}
 			}
-			if (creep.carry.energy == creep.carryCapacity) {
-				creep.say('Depositing');
-		  	creep.memory.harvesting = false;
-			}
 		}
 		else {
 			var targets = creep.room.find(FIND_STRUCTURES, {
@@ -80,10 +85,6 @@ var roleHauler = {
 				if (creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(target);
 				}
-			}
-			if (creep.carry.energy < creep.carryCapacity) {
-				creep.say('Harvesting');
-			  creep.memory.harvesting = true;
 			}
 		}
 
