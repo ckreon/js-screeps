@@ -48,7 +48,7 @@ var roleUpgrader = {
 				creep.moveTo(creep.room.controller);
 			}
 			if (creep.carry.energy == 0) {
-				creep.say('Harvesting');
+				creep.say('Upgrader Collecting');
 			  creep.memory.harvesting = true;
 			}
 		}

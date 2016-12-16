@@ -48,7 +48,7 @@ var roleBuilder = {
 					creep.moveTo(target);
 				}
 				if (creep.carry.energy == 0) {
-					creep.say('Harvesting');
+					creep.say('Builder Collecting');
 					creep.memory.harvesting = true;
 				}
 			}
