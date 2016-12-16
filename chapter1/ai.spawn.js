@@ -1,15 +1,15 @@
 // SET UNIT NUMBERS HERE
-var builders = 3;
-var harvesters = 3;
-var haulers = 2;
-var healers = 2;
-var upgraders = 4;
+var builders_wanted = 3;
+var harvesters_wanted = 3;
+var haulers_wanted = 2;
+var healers_wanted = 2;
+var upgraders_wanted = 4;
 
 // BUILDERS
 module.exports.builders = function() {
 	var builder_count = _.filter(Game.creeps, (creep) =>
 												(creep.memory.role == 'builder'));
-	if (builder_count.length < builders) {
+	if (builder_count.length < builders_wanted) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
 			undefined,
@@ -23,7 +23,7 @@ module.exports.builders = function() {
 module.exports.harvesters = function() {
 	var harvester_count = _.filter(Game.creeps, (creep) =>
 													(creep.memory.role == 'harvester'));
-	if (harvester_count.length < harvesters) {
+	if (harvester_count.length < harvesters_wanted) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
 			undefined,
@@ -37,7 +37,7 @@ module.exports.harvesters = function() {
 module.exports.haulers = function() {
 	var hauler_count = _.filter(Game.creeps, (creep) =>
 											 (creep.memory.role == 'hauler'));
-	if (hauler_count.length < haulers) {
+	if (hauler_count.length < haulers_wanted) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE],
 			undefined,
@@ -51,7 +51,7 @@ module.exports.haulers = function() {
 module.exports.healers = function() {
 	var healer_count = _.filter(Game.creeps, (creep) =>
 											 (creep.memory.role == 'healer'));
-	if (healer_count.length < healers) {
+	if (healer_count.length < healers_wanted) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
 			undefined,
@@ -65,7 +65,7 @@ module.exports.healers = function() {
 module.exports.upgraders = function() {
 	var upgrader_count = _.filter(Game.creeps, (creep) =>
 												 (creep.memory.role == 'upgrader'));
-	if (upgrader_count.length < upgraders) {
+	if (upgrader_count.length < upgraders_wanted) {
 		var newName = Game.spawns['Spawn1'].createCreep(
 			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
 			undefined,
