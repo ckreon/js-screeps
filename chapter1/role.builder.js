@@ -8,7 +8,7 @@ var roleBuilder = {
 		if (creep.memory.harvesting) {
 			var energy = creep.pos.findInRange(FIND_DROPPED_ENERGY, 3);
 
-			if (energy.length < 1) {}
+			if (energy.length < 1) {
 				var storage = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure) => {
 						return (
