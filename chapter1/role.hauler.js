@@ -74,8 +74,7 @@ var roleHauler = {
 			}
 			if (targets.length > 0) {
 				var target = creep.pos.findClosestByRange(targets);
-				if (creep.transfer(target, RESOURCE_ENERGY,
-						[target.energyCapacity - target.energy]) == ERR_NOT_IN_RANGE) {
+				if (creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(target);
 				}
 			}
