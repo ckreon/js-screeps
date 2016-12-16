@@ -15,7 +15,12 @@ var roleBuilder = {
 			});
 
 			if (storage.length > 0) {
-				var target = creep.pos.findClosestByRange(storage);
+				var targets = storage.sort(function(store1, store2) {
+						return (
+							parseFloat(store2.store[RESOURCE_ENERGY]) -
+							parseFloat(store1.store[RESOURCE_ENERGY]));
+					});
+					var target = targets[0];
 
 				if (!(creep.pos.isNearTo(target))) {
 					creep.moveTo(target);
