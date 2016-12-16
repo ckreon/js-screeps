@@ -20,10 +20,10 @@ var roleHauler = {
 					}
 				});
 				if (storage.length) {
-					var targets = storage.sort(function(a, b) {
+					var targets = storage.sort(function(store1, store2) {
 						return (
-							parseFloat(a.store[RESOURCE_ENERGY]) -
-							parseFloat(b.store[RESOURCE_ENERGY]));
+							parseFloat(store2.store[RESOURCE_ENERGY]) -
+							parseFloat(store1.store[RESOURCE_ENERGY]));
 					});
 					var target = targets[0];
 
