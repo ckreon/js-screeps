@@ -1,6 +1,6 @@
 // SET UNIT NUMBERS HERE
 var builders_wanted = 2;
-var harvesters_wanted = 3;
+var harvesters_wanted = 2;
 var haulers_wanted = 2;
 var healers_wanted = 1;
 var upgraders_wanted = 1;
@@ -11,7 +11,7 @@ module.exports.builders = function() {
 												(creep.memory.role == 'builder'));
 	if (builder_count.length < builders_wanted) {
 		var newName = Game.spawns['Spawn1'].createCreep(
-			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
+			[WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE],
 			undefined,
 			{ role: 'builder', harvesting: 'true' });
 
@@ -25,7 +25,7 @@ module.exports.harvesters = function() {
 													(creep.memory.role == 'harvester'));
 	if (harvester_count.length < harvesters_wanted) {
 		var newName = Game.spawns['Spawn1'].createCreep(
-			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
+			[WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE],
 			undefined,
 			{ role: 'harvester', harvesting: 'true' });
 
@@ -39,7 +39,7 @@ module.exports.haulers = function() {
 											 (creep.memory.role == 'hauler'));
 	if (hauler_count.length < haulers_wanted) {
 		var newName = Game.spawns['Spawn1'].createCreep(
-			[CARRY, CARRY, CARRY, MOVE, MOVE],
+			[CARRY, CARRY, CARRY, CARRY, MOVE, MOVE],
 			undefined,
 			{ role: 'hauler', harvesting: 'true' });
 
@@ -53,7 +53,7 @@ module.exports.healers = function() {
 											 (creep.memory.role == 'healer'));
 	if (healer_count.length < healers_wanted) {
 		var newName = Game.spawns['Spawn1'].createCreep(
-			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
+			[WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE],
 			undefined,
 			{ role: 'healer', harvesting: 'true' });
 
@@ -67,7 +67,7 @@ module.exports.upgraders = function() {
 												 (creep.memory.role == 'upgrader'));
 	if (upgrader_count.length < upgraders_wanted) {
 		var newName = Game.spawns['Spawn1'].createCreep(
-			[WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
+			[WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE],
 			undefined,
 			{ role: 'upgrader', harvesting: 'true' });
 
