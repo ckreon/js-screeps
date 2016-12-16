@@ -9,12 +9,12 @@ var roleHarvester = {
 			if (!(creep.memory.source)) {
 				if ((_.filter(Game.creeps, (creep) =>
 					 	 				(creep.memory.role == 'harvester') &&
-					 	 				(creep.memory.source == 0)
-					 	 				).length) < 2) {
-					creep.memory.source = 0;
+					 	 				(creep.memory.source == 1)
+					 	 				).length) < 1) {
+					creep.memory.source = 1;
 				}
 				else {
-					creep.memory.source = 1;
+					creep.memory.source = 0;
 				}
 			}
 			if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
