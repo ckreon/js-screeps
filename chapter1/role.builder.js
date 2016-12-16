@@ -14,16 +14,6 @@ var roleBuilder = {
 				}
 			});
 
-			if (storage.length == 0) {
-				var storage = creep.room.find(FIND_STRUCTURES, {
-					filter: (structure) => {
-						return (
-									 (structure.structureType == STRUCTURE_SPAWN) &&
-									 (Game.spawns.Spawn1.room.energyAvailable > 700));
-					}
-				});
-			}
-
 			if (storage.length > 0) {
 				var target = creep.pos.findClosestByRange(storage);
 
@@ -31,9 +21,8 @@ var roleBuilder = {
 					creep.moveTo(target);
 				}
 				else {
-					(creep.withdraw(target, RESOURCE_ENERGY,
-												(creep.carryCapacity - _.sum(creep.carry)))) ||
-					(creep.withdraw(target, RESOURCE_ENERGY, target.energy));
+					creep.withdraw(target, RESOURCE_ENERGY,
+												(creep.carryCapacity - _.sum(creep.carry)));
 				}
 			}
 			else {
