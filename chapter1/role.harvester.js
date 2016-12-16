@@ -7,10 +7,10 @@ var roleHarvester = {
 			var sources = creep.room.find(FIND_SOURCES);
 
 			if (!(creep.memory.source)) {
-				if (_.filter(Game.creeps, (creep) =>
+				if ((_.filter(Game.creeps, (creep) =>
 					 	 				(creep.memory.role == 'harvester') &&
 					 	 				(creep.memory.source == 0)
-					 	 				).length < 2) {
+					 	 				).length) < 2) {
 					creep.memory.source = 0;
 				}
 				else {
