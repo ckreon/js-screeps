@@ -11,7 +11,7 @@ var roleBuilder = {
 				filter: (structure) => {
 					return (
 								 (structure.structureType == STRUCTURE_SPAWN) &&
-								 (Game.spawns.Spawn1.room.energyAvailable > 550));
+								 (Game.spawns.Spawn1.room.energyAvailable > 500));
 				}
 			});
 
