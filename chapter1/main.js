@@ -52,7 +52,7 @@ module.exports.loop = function () {
 		var id = Game.structures[id];
 
 		if (id.structureType == STRUCTURE_TOWER) {
-			structure.tower.run(id);
+			structures.tower.run(id);
 		}
 
 		//structures[id.structureType].run(id);
