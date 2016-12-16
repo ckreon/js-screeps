@@ -1,9 +1,9 @@
 // SET UNIT NUMBERS HERE
 var builders_wanted = 3;
 var harvesters_wanted = 2;
-var haulers_wanted = 4;
+var haulers_wanted = 3;
 var healers_wanted = 1;
-var upgraders_wanted = 4;
+var upgraders_wanted = 3;
 
 // BUILDERS
 module.exports.builders = function() {
