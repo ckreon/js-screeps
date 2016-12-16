@@ -58,7 +58,8 @@ var roleBuilder = {
 					return (
 						parseFloat(site2.progressTotal) -
 						parseFloat(site1.progressTotal));
-				}
+				});
+				
 				if (creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(targets[0]);
 				}
