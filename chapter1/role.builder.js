@@ -48,12 +48,12 @@ var roleBuilder = {
 					creep.moveTo(target);
 				}
 			}
-			else if (creep.carry.energy == 0) {
-					creep.say('BL Collecting');
-					creep.memory.harvesting = true;
-			}
 			else {
 					roleHealer.run(creep);
+			}
+			if (creep.carry.energy == 0) {
+					creep.say('BL Collecting');
+					creep.memory.harvesting = true;
 			}
 		}
 
