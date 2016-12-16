@@ -51,12 +51,16 @@ var roleBuilder = {
 			}
 		}
 		else {
-		  var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+		  var sites = creep.room.find(FIND_CONSTRUCTION_SITES);
 
-			if (targets.length > 0) {
-				var target = creep.pos.findClosestByRange(targets);
-				if (creep.build(target) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(target);
+			if (sites.length > 0) {
+				var targets = sites.sort(function(site1, site2) {
+					return (
+						parseFloat(site2.progressTotal) -
+						parseFloat(site1.progressTotal));
+				}
+				if (creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(targets[0]);
 				}
 			}
 			if (creep.carry.energy == 0) {
