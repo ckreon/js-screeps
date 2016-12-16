@@ -37,7 +37,7 @@ module.exports.loop = function () {
 	// spawn haulers
 	ai.spawn.haulers();
 	// spawn harvesters
-	//ai.spawn.harvesters();
+	ai.spawn.harvesters();
 
   // ASSIGN UNITS & STRUCTURES
 
