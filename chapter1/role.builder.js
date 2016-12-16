@@ -1,5 +1,4 @@
 var roleHealer = require('role.healer');
-var roleHarvester = require('role.harvester');
 
 var roleBuilder = {
 
@@ -59,17 +58,17 @@ var roleBuilder = {
 						parseFloat(site2.progressTotal) -
 						parseFloat(site1.progressTotal));
 				});
-				
+
 				if (creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(targets[0]);
+				}
+				else {
+					roleHealer.run(creep);
 				}
 			}
 			if (creep.carry.energy == 0) {
 					creep.say('BL Collecting');
 					creep.memory.harvesting = true;
-			}
-			else {
-					roleHealer.run(creep);
 			}
 		}
 
