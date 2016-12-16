@@ -49,7 +49,7 @@ var roleBuilder = {
 				}
 			}
 			if (creep.carry.energy == 0) {
-					creep.say('Builder Collecting');
+					creep.say('Bl Collecting');
 					creep.memory.harvesting = true;
 			}
 			else {

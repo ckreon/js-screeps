@@ -89,7 +89,7 @@ var roleHealer = {
 				}
 			}
 			if (creep.carry.energy == 0) {
-					creep.say('Healer Collecting');
+					creep.say('He Collecting');
 					creep.memory.harvesting = true;
 			}
 		}
