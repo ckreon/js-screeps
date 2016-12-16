@@ -6,31 +6,40 @@ var roleHealer = {
 	run: function(creep) {
 
 		if (creep.memory.harvesting) {
-			var storage = creep.room.find(FIND_STRUCTURES, {
-				filter: (structure) => {
-					return (
-								 (structure.structureType == STRUCTURE_CONTAINER) &&
-								 (structure.store[RESOURCE_ENERGY] > 0));
-				}
-			});
+			var energy = creep.pos.findInRange(FIND_DROPPED_ENERGY, 3);
 
-			if (storage.length) {
-				var target = creep.pos.findClosestByRange(storage);
+			if (energy.length <1 ) {
+				var storage = creep.room.find(FIND_STRUCTURES, {
+					filter: (structure) => {
+						return (
+									 (structure.structureType == STRUCTURE_CONTAINER) &&
+									 (structure.store[RESOURCE_ENERGY] > 0));
+					}
+				});
 
-				if (!(creep.pos.isNearTo(target))) {
-					creep.moveTo(target);
+				if (storage.length) {
+					var target = creep.pos.findClosestByRange(storage);
+
+					if (!(creep.pos.isNearTo(target))) {
+						creep.moveTo(target);
+					}
+					else {
+						creep.withdraw(target, RESOURCE_ENERGY,
+													(creep.carryCapacity - _.sum(creep.carry)));
+					}
 				}
 				else {
-					creep.withdraw(target, RESOURCE_ENERGY,
-												(creep.carryCapacity - _.sum(creep.carry)));
+					var sources = creep.room.find(FIND_SOURCES);
+					creep.memory.source = 0;
+
+					if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
+						creep.moveTo(sources[creep.memory.source]);
+					}
 				}
 			}
 			else {
-				var sources = creep.room.find(FIND_SOURCES);
-				creep.memory.source = 0;
-
-				if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
-					creep.moveTo(sources[creep.memory.source]);
+				if (creep.pickup(energy[0]) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(energy[0]);
 				}
 			}
 			if (creep.carry.energy == creep.carryCapacity) {

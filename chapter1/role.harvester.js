@@ -4,24 +4,33 @@ var roleHarvester = {
 	run: function(creep) {
 
 		if (creep.memory.harvesting) {
-			var sources = creep.room.find(FIND_SOURCES);
+			var energy = creep.pos.findInRange(FIND_DROPPED_ENERGY, 3);
 
-			if (!(creep.memory.source)) {
-				if ((_.filter(Game.creeps, (creep) =>
-					 	 				(creep.memory.role == 'harvester') &&
-					 	 				(creep.memory.source == 1)
-					 	 				).length) < 1) {
-					creep.memory.source = 1;
+			if (energy.length < 1) {
+				var sources = creep.room.find(FIND_SOURCES);
+
+				if (!(creep.memory.source)) {
+					if ((_.filter(Game.creeps, (creep) =>
+						 	 				(creep.memory.role == 'harvester') &&
+						 	 				(creep.memory.source == 1)
+						 	 				).length) < 1) {
+						creep.memory.source = 1;
+					}
+					else {
+						creep.memory.source = 0;
+					}
 				}
-				else {
-					creep.memory.source = 0;
+				if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(sources[creep.memory.source]);
 				}
 			}
-			if (creep.harvest(sources[creep.memory.source]) == ERR_NOT_IN_RANGE) {
-				creep.moveTo(sources[creep.memory.source]);
+			else {
+				if (creep.pickup(energy[0]) == ERR_NOT_IN_RANGE) {
+					creep.moveTo(energy[0]);
+				}
 			}
 			if (creep.carry.energy == creep.carryCapacity) {
-				creep.say('Depositing');
+				creep.say('HR Depositing');
 			  creep.memory.harvesting = false;
 			}
 		}
@@ -46,7 +55,7 @@ var roleHarvester = {
 				creep.moveTo(targets[0]);
 			}
 			if (creep.carry.energy == 0) {
-				creep.say('Harvesting');
+				creep.say('HR Harvesting');
 			  creep.memory.harvesting = true;
 			}
 		}

@@ -48,7 +48,7 @@ var roleBuilder = {
 				}
 			}
 			if (creep.carry.energy == creep.carryCapacity) {
-					creep.say('Building');
+					creep.say('BL Building');
 			    creep.memory.harvesting = false;
 			}
 		}
