@@ -1,7 +1,7 @@
 // SET UNIT NUMBERS HERE
 var builders = 3;
 var harvesters = 3;
-var haulers = 1;
+var haulers = 2;
 var healers = 2;
 var upgraders = 4;
 
