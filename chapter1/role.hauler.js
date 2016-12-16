@@ -4,36 +4,28 @@ var roleHauler = {
 	run: function(creep) {
 
 		if (creep.memory.harvesting) {
-			var energy = creep.room.find(FIND_DROPPED_ENERGY, {
-				filter: (res) => {
-					return (res.amount > 50)
+			var storage = creep.room.find(FIND_STRUCTURES, {
+				filter: (structure) => {
+					return (
+						(structure.structureType == STRUCTURE_CONTAINER) &&
+						(structure.store[RESOURCE_ENERGY] > creep.carryCapacity) &&
+						(structure.pos.findInRange(FIND_SOURCES, 2).length != 0));
 				}
 			});
-
-			if (energy.length == 0) {
-				var storage = creep.room.find(FIND_STRUCTURES, {
-					filter: (structure) => {
-						return (
-							(structure.structureType == STRUCTURE_CONTAINER) &&
-							(structure.store[RESOURCE_ENERGY] > creep.carryCapacity) &&
-							(structure.pos.findInRange(FIND_SOURCES, 2).length != 0));
-					}
+			if (storage.length) {
+				var targets = storage.sort(function(store1, store2) {
+					return (
+						parseFloat(store2.store[RESOURCE_ENERGY]) -
+						parseFloat(store1.store[RESOURCE_ENERGY]));
 				});
-				if (storage.length) {
-					var targets = storage.sort(function(store1, store2) {
-						return (
-							parseFloat(store2.store[RESOURCE_ENERGY]) -
-							parseFloat(store1.store[RESOURCE_ENERGY]));
-					});
-					var target = targets[0];
+				var target = targets[0];
 
-					if (!(creep.pos.isNearTo(target))) {
-						creep.moveTo(target);
-					}
-					else {
-						creep.withdraw(target, RESOURCE_ENERGY,
-													(creep.carryCapacity - _.sum(creep.carry)));
-					}
+				if (!(creep.pos.isNearTo(target))) {
+					creep.moveTo(target);
+				}
+				else {
+					creep.withdraw(target, RESOURCE_ENERGY,
+												(creep.carryCapacity - _.sum(creep.carry)));
 				}
 			}
 			else {
