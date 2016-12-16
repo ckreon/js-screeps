@@ -11,7 +11,7 @@ var roleBuilder = {
 				filter: (structure) => {
 					return (
 								 (structure.structureType == STRUCTURE_SPAWN) &&
-								 (Game.spawns.Spawn1.room.energyAvailable > 500));
+								 (Game.spawns.Spawn1.room.energyAvailable > 400));
 				}
 			});
 
@@ -42,7 +42,7 @@ var roleBuilder = {
 		else {
 		  var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
 
-			if (targets.length) {
+			if (targets.length > 0) {
 				var target = creep.pos.findClosestByRange(targets);
 				if (creep.build(target) == ERR_NOT_IN_RANGE) {
 					creep.moveTo(target);
