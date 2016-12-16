@@ -12,7 +12,7 @@ var roleHauler = {
 						(structure.pos.findInRange(FIND_SOURCES, 2).length != 0));
 				}
 			});
-			if (storage.length) {
+			if (storage.length > 0) {
 				var targets = storage.sort(function(store1, store2) {
 					return (
 						parseFloat(store2.store[RESOURCE_ENERGY]) -
@@ -26,16 +26,6 @@ var roleHauler = {
 				else {
 					creep.withdraw(target, RESOURCE_ENERGY,
 												(creep.carryCapacity - _.sum(creep.carry)));
-				}
-			}
-			else {
-				var target = creep.pos.findClosestByRange(energy);
-
-				if (!(creep.pos.isNearTo(target))) {
-					creep.moveTo(target);
-				}
-				else {
-					creep.pickup(target);
 				}
 			}
 			if (creep.carry.energy == creep.carryCapacity) {
