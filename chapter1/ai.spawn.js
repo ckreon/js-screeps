@@ -3,7 +3,7 @@ var builders_wanted = 3;
 var harvesters_wanted = 2;
 var haulers_wanted = 2;
 var healers_wanted = 1;
-var upgraders_wanted = 2;
+var upgraders_wanted = 4;
 
 // BUILDERS
 module.exports.builders = function() {
@@ -39,7 +39,7 @@ module.exports.haulers = function() {
 											 (creep.memory.role == 'hauler'));
 	if (hauler_count.length < haulers_wanted) {
 		var newName = Game.spawns['Spawn1'].createCreep(
-			[CARRY, CARRY, CARRY, CARRY, MOVE, MOVE],
+			[CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE],
 			undefined,
 			{ role: 'hauler', harvesting: 'true' });
 
