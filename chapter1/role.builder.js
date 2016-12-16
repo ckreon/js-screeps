@@ -10,10 +10,20 @@ var roleBuilder = {
 			var storage = creep.room.find(FIND_STRUCTURES, {
 				filter: (structure) => {
 					return (
-								 (structure.structureType == STRUCTURE_SPAWN) &&
-								 (Game.spawns.Spawn1.room.energyAvailable > 500));
+						(structure.structureType == STRUCTURE_CONTAINER) &&
+						(structure.store[RESOURCE_ENERGY] > creep.carryCapacity));
 				}
 			});
+
+			if (storage.length == 0) {
+				var storage = creep.room.find(FIND_STRUCTURES, {
+					filter: (structure) => {
+						return (
+									 (structure.structureType == STRUCTURE_SPAWN) &&
+									 (Game.spawns.Spawn1.room.energyAvailable > 700));
+					}
+				});
+			}
 
 			if (storage.length > 0) {
 				var target = creep.pos.findClosestByRange(storage);
