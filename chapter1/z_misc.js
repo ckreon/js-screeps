@@ -42,4 +42,4 @@ Game.spawns['Spawn1'].createCreep( [WORK, CARRY, MOVE, MOVE], 'Upgrader1' );
 
 // Write a unit property to memory
 Game.creeps['UnitName'].memory.role = 'harvester';
-Game.creeps['UnitName'].memory.role = 'upgrader';
+Game.creeps['UnitName'].memory.role = 'upgrader'; 
