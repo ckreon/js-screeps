@@ -3,7 +3,7 @@ var builders_wanted = 2;
 var harvesters_wanted = 3;
 var haulers_wanted = 2;
 var healers_wanted = 1;
-var upgraders_wanted = 2;
+var upgraders_wanted = 3;
 
 // BUILDERS
 module.exports.builders = function() {
