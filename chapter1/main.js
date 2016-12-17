@@ -5,7 +5,7 @@ var roles = {
 	healer:			require('role.healer'),
 	upgrader:		require('role.upgrader')
 };
-
+ 
 var structures = {
 	tower:			require('structure.tower')
 };
