@@ -56,6 +56,15 @@ var roleHauler = {
 				var targets = creep.room.find(FIND_STRUCTURES, {
 					filter: (structure) => {
 						return (
+							(structure.structureType == STRUCTURE_TOWER) &&
+							(structure.energy < structure.energyCapacity));
+					}
+				});
+			}
+			if (targets.length == 0) {
+				var targets = creep.room.find(FIND_STRUCTURES, {
+					filter: (structure) => {
+						return (
 							((structure.structureType == STRUCTURE_CONTAINER) &&
 								(_.sum(structure.store) < (structure.storeCapacity - creep.carry.energy)) &&
 								structure.pos.findInRange(FIND_SOURCES, 2).length == 0));
@@ -68,15 +77,6 @@ var roleHauler = {
 						return (
 							(structure.structureType == STRUCTURE_STORAGE) &&
 							(_.sum(structure.store) < structure.storeCapacity));
-					}
-				});
-			}
-			if (targets.length == 0) {
-				var targets = creep.room.find(FIND_STRUCTURES, {
-					filter: (structure) => {
-						return (
-							(structure.structureType == STRUCTURE_TOWER) &&
-							(structure.energy < structure.energyCapacity));
 					}
 				});
 			}
