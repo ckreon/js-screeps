@@ -25,7 +25,7 @@ module.exports.harvesters = function() {
 													(creep.memory.role == 'harvester'));
 	if (harvester_count.length < harvesters_wanted) {
 		var newName = Game.spawns['Spawn1'].createCreep(
-			[WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE],
+			[WORK, WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE],
 			undefined,
 			{ role: 'harvester', harvesting: 'true' });
 
