@@ -57,7 +57,7 @@ var roleHauler = {
 					filter: (structure) => {
 						return (
 							(structure.structureType == STRUCTURE_TOWER) &&
-							(structure.energy < (structure.energyCapacity - 1500)));
+							(structure.energy < (structure.energyCapacity - 500)));
 					}
 				});
 			}
